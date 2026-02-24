@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Security Events</h2>
+<p>Recent security-relevant actions for your account.</p>
+<p>
+    <a href="/security/export/csv">Export CSV</a> |
+    <a href="/security/export/json">Export JSON</a>
+</p>
+
+<table border="1" width="100%">
+    <tr>
+        <th>Time (UTC)</th>
+        <th>Event</th>
+        <th>Status</th>
+        <th>IP</th>
+        <th>Details</th>
+    </tr>
+
+    {% for log in logs %}
+    <tr>
+        <td>{{ log[4] }}</td>
+        <td>{{ log[0] }}</td>
+        <td>{{ log[1] }}</td>
+        <td>{{ log[2] or "Unknown" }}</td>
+        <td>{{ log[3] or "-" }}</td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="5">No security events recorded yet.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}

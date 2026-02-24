@@ -1,0 +1,116 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f6f9;
+    margin: 0;
+}
+
+nav {
+    background-color: #111;
+    color: white;
+    padding: 15px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+.nav-logout-form {
+    display: inline;
+}
+
+.container {
+    background: white;
+    margin: 40px auto;
+    padding: 30px;
+    width: min(95vw, 980px);
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+}
+
+button {
+    padding: 10px 15px;
+    background: black;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+.flash {
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+.flash-success {
+    background-color: #eaf7ee;
+    border: 1px solid #8bcf9d;
+    color: #1f5f31;
+}
+
+.flash-error {
+    background-color: #fdecec;
+    border: 1px solid #e89a9a;
+    color: #8a1f1f;
+}
+
+.search-form {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.search-form a {
+    color: #111;
+}
+
+.rename-form {
+    display: inline-flex;
+    gap: 8px;
+    margin-left: 10px;
+}
+
+.delete-form {
+    display: inline;
+}
+
+.link-button {
+    border: none;
+    background: none;
+    color: #0645ad;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 0;
+    font: inherit;
+}
+
+.nav-link-button {
+    color: white;
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+.rename-form input {
+    width: 180px;
+}
+
+table {
+    border-collapse: collapse;
+}
+
+table th,
+table td {
+    padding: 8px;
+    vertical-align: top;
+}

@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<h2>Welcome, {{ username }}</h2>
+
+<h3>Upload File</h3>
+<form method="POST" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="file" name="file" required>
+    <button type="submit">Upload</button>
+</form>
+
+<h3>Your Files</h3>
+
+<form method="GET" action="/dashboard" class="search-form">
+    <input type="text" name="q" placeholder="Search by filename" value="{{ search_term or '' }}">
+    <button type="submit">Search</button>
+    {% if search_term %}
+        <a href="/dashboard">Clear</a>
+    {% endif %}
+</form>
+
+<table border="1" width="100%">
+    <tr>
+        <th>File Name</th>
+        <th>Size</th>
+        <th>Uploaded</th>
+        <th>Downloads</th>
+        <th>Actions</th>
+    </tr>
+
+    {% for file in files %}
+    <tr>
+        <td>{{ file[2] }}</td>
+        <td>{{ format_size(file[4] or 0) }}</td>
+        <td>{{ file[5] or "Unknown" }}</td>
+        <td>{{ file[3] }}</td>
+        <td>
+            <a href="/download/{{ file[0] }}">Download</a> |
+            <form method="POST" action="/delete/{{ file[0] }}" class="delete-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <button type="submit" class="link-button">Delete</button>
+            </form>
+            <form method="POST" action="/rename/{{ file[0] }}" class="rename-form">
+                <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+                <input type="text" name="new_name" placeholder="Rename file" maxlength="120" required>
+                <button type="submit">Rename</button>
+            </form>
+        </td>
+    </tr>
+    {% else %}
+    <tr>
+        <td colspan="5">No files found.</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
